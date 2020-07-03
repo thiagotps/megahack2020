@@ -1,0 +1,35 @@
+.card-wrapper {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #A8D0E6;
+}
+
+.example-card {
+  max-width: 400px;
+  background-color: #F8E9A1;
+}
+
+.conteudo-card {
+  text-align: center;
+}
+
+.example-header-image {
+  background-image: url('/assets/user.png');
+  background-size: cover;
+}
+
+.logo {
+	width: 130px;
+}
+
+.example-full-width {
+	width: 90%;
+}
+
+.direita {
+	float: right;
+	margin-right: 15px;
+}
