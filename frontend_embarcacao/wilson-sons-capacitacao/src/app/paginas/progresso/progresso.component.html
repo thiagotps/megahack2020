@@ -1,0 +1,21 @@
+<mat-card class="footer">
+	<div class="item-wrapper">
+		<span [class.active]="pagina==='progresso'" class="item" (click)="navegar('progresso')">Progresso</span>
+		<span [class.active]="pagina==='curso'" class="item" (click)="navegar('curso')">Curso</span>
+		<span [class.active]="pagina==='pesquisar'" class="item" (click)="navegar('pesquisar')">Pesquisar</span>
+		<span class="item-footer" (click)="navegar('')">sair</span>
+	</div>
+</mat-card>
+
+<div class="card-wrapper">
+	<mat-card>
+		<h3 class="title">Meu Progresso:</h3>
+		<div class="chart" style="display: block">
+			<canvas baseChart
+			          [data]="doughnutChartData"
+			          [labels]="doughnutChartLabels"
+			          [options]="doughnutChartOptions"
+			          [chartType]="doughnutChartType"></canvas>
+		</div>
+	</mat-card>
+</div>

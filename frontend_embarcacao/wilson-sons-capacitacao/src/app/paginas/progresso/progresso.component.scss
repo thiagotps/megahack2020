@@ -1,0 +1,42 @@
+.footer {
+	position: absolute;
+	bottom: 0px;
+	width: 100vw;
+	background-color: #374785;
+	color: #A8D0E6;
+	border-radius: 0px;
+}
+
+.item-wrapper {
+	display: flex;
+	justify-content: space-around;
+}
+
+.item {
+	cursor: pointer;
+}
+
+.active {
+	color: #F76C6C;
+}
+
+.card-wrapper {
+	display: flex;
+	align-items: center;
+	height: calc(100vh - 20px);
+	width: 100vw;
+}
+
+.card-wrapper mat-card {
+	width: 100vw;
+	margin-left: 30px;
+	height: 80vh;
+}
+
+.chart {
+	margin-top: 25vh;
+}
+
+.title {
+	margin-top: 60px;
+}

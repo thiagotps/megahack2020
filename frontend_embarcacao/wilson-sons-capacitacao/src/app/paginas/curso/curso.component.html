@@ -1,0 +1,14 @@
+<mat-card class="footer">
+	<div class="item-wrapper-footer">
+		<span [class.active]="pagina==='progresso'" class="item-footer" (click)="navegar('progresso')">Progresso</span>
+		<span [class.active]="pagina==='curso'" class="item-footer" (click)="navegar('curso')">Curso</span>
+		<span [class.active]="pagina==='pesquisar'" class="item-footer" (click)="navegar('pesquisar')">Pesquisar</span>
+		<span class="item-footer" (click)="navegar('')">sair</span>
+	</div>
+</mat-card>
+
+<div class="item-item-wrapper">
+	<div class="item-wrapper">
+		<mat-card *ngFor="let curso of listaCursos" class="item-curso">{{curso['nome']}}</mat-card>
+	</div>
+</div>

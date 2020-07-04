@@ -63,7 +63,7 @@ export class EstatisticasComponent implements OnInit {
   }
 
   navegar(endereco){
-	this.router.navigate([endereco]);
+	  this.router.navigate([endereco]);
   }
 
 }

@@ -1,0 +1,27 @@
+<div class="card-wrapper">  
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Capacitação de Colaboradores</mat-card-title>
+      <mat-card-subtitle>Login</mat-card-subtitle>
+    </mat-card-header>
+    <div class="conteudo-card">
+      <img mat-card-image src="/assets/logo.png" class="logo">
+      <mat-card-content>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <mat-label>E-mail</mat-label>
+            <input matInput placeholder="joao@wilsonsons.com" [(ngModel)]="email" name="emailInput">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Senha</mat-label>
+            <input matInput type="password" [(ngModel)]="senha" name="senhaInput">
+          </mat-form-field>
+        </form>
+
+        <button mat-button class="direita" color="primary" (click)="realizaLogin()">Entrar</button>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>
