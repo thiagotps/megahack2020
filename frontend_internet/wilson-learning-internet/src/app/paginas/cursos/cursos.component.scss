@@ -43,3 +43,42 @@
 	bottom: 30px;
 	right: 30px;
 }
+
+.dialog {
+	position: relative;
+	width: 70vw;
+	height: 80vh;
+}
+
+.formulario-input {
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.line-input {
+	display: flex;
+	justify-content: space-around;
+}
+
+.input2 {
+	width: 30%;
+}
+
+.button-adicionar {
+	height: 40px;
+}
+
+.esconder {
+	display: none;
+}
+
+table {
+  width: 100%;
+}
+
+mat-dialog-actions {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}

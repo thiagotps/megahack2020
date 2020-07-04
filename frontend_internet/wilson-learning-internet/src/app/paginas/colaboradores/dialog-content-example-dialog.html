@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Adicionar Colaborador:</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field>
+    <mat-label>Nome do Colaborador</mat-label>
+    <input matInput placeholder="Ex. Jorge" [(ngModel)]="nomeColaborador">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="nomeColaborador" cdkFocusInitial>Adicionar</button>
+</mat-dialog-actions>

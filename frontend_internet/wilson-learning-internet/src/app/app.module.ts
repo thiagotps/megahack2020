@@ -15,8 +15,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { EstatisticasComponent } from './paginas/estatisticas/estatisticas.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { CursosComponent } from './paginas/cursos/cursos.component';
-import { ColaboradoresComponent } from './paginas/colaboradores/colaboradores.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { CursosComponent, DialogAdicionarCurso, DialogAdicionarQuestionario } from './paginas/cursos/cursos.component';
+import { ColaboradoresComponent, DialogAdicionarColaborador } from './paginas/colaboradores/colaboradores.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { ColaboradoresComponent } from './paginas/colaboradores/colaboradores.co
     LoginComponent,
     EstatisticasComponent,
     CursosComponent,
-    ColaboradoresComponent
+    ColaboradoresComponent,
+    DialogAdicionarCurso,
+    DialogAdicionarQuestionario,
+    DialogAdicionarColaborador,
   ],
   imports: [
     HttpClientModule,
@@ -38,6 +44,14 @@ import { ColaboradoresComponent } from './paginas/colaboradores/colaboradores.co
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatTableModule,
+  ],
+  entryComponents: [
+    DialogAdicionarCurso,
+    DialogAdicionarQuestionario,
+    DialogAdicionarColaborador,
   ],
   providers: [],
   bootstrap: [AppComponent]

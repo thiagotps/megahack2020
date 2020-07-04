@@ -1,0 +1,60 @@
+<div class="dialog">
+  <h2 mat-dialog-title>Adicionar Curso</h2>
+  <mat-dialog-content class="mat-typography">
+    <h3>Título do Curso:</h3>
+    <mat-form-field class="example-full-width" class="formulario-input">
+      <mat-label>Título</mat-label>
+      <input matInput placeholder="Ex. Mecanica de Motor de Popa" [(ngModel)]="obj.tituloCurso" name="tituloInput">
+    </mat-form-field>
+
+    <h3> Conteúdo do Curso:</h3>
+    <div class="line-input">
+      <mat-form-field class="input2">
+        <mat-label>Título do Conteúdo</mat-label>
+        <input matInput placeholder="Ex. Introdução a Mecanica" [(ngModel)]="obj.tituloConteudo" name="tituloConteudoInput">
+      </mat-form-field>
+
+      <mat-form-field classs="input2">
+        <mat-label>Tipo de Conteúdo</mat-label>
+        <mat-select [(ngModel)]="obj.tipoConteudo" name="tipoConteudoSelect">
+          <mat-option value="video">Vídeo</mat-option>
+          <mat-option value="pdf">PDF</mat-option>
+          <mat-option value="questionario">Questionário</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-stroked-button color="primary" class="button-adicionar" (click)="adicionarConteudo()">Adicionar Conteúdo</button>
+
+      <button mat-mini-fab color="accent" (click)="aidiconar()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <input #selecionaArquivo type="file" id="fileInput" class="esconder"/>
+
+    <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="titulo">
+        <mat-header-cell *matHeaderCellDef> Título do Conteúdo </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.titulo}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="tipo">
+        <mat-header-cell *matHeaderCellDef> Tipo do Conteúdo </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.tipo}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-button [mat-dialog-close]="obj" cdkFocusInitial>Adicionar</button>
+  </mat-dialog-actions>
+</div>
