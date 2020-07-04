@@ -1,5 +1,17 @@
 #+TITLE: MegaHack2020
 
+* Configurando
+Basta executar na raiz do projeto:
+#+BEGIN_SRC bash
+mkvirtualenv megahack2020
+pip install -r requeriments.txt
+#+END_SRC
+
+Para voltar ao mesmo /virtual enviroment/ basta executar:
+#+BEGIN_SRC bash
+workon megahack2020
+#+END_SRC
+
 * Como rodar (Embarcação)
 *TODO*
 
