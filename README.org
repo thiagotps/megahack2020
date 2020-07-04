@@ -12,6 +12,14 @@ Para voltar ao mesmo /virtual enviroment/ basta executar:
 workon megahack2020
 #+END_SRC
 
+Se você instalar algum pacote novo no ambiente virtual, não se esqueça de
+atualizar o arquivo *requeriments.txt* com o comando:
+#+BEGIN_SRC bash
+pip freeze > requeriments.txt
+#+END_SRC
+
+Sendo que a execução deve ser na raiz do projeto.
+
 * Como rodar (Embarcação)
 *TODO*
 
