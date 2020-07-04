@@ -18,7 +18,7 @@ app.add_middleware(
 )
 
 @app.get("/")
-async def read_root():
+async def readRoot():
     return {"Hello": "World"}
 
 
@@ -27,3 +27,42 @@ async def login(user: User):
 	email = user.email
 	senha = user.senha
 	return {"login_status": True}
+
+@app.get("/avaliacoes")
+async def getResultadoAvaliacoes():
+    return {
+    	"ruim": 30,
+    	"medio": 30,
+    	"bom": 40
+    }
+
+@app.get("/cursos")
+async def getCursos():
+    return [
+    	{
+			"nome": "curso 1",
+			"acessos": 1,
+    	},
+    	{
+			"nome": "curso 2",
+			"acessos": 5,
+    	},
+    	{
+			"nome": "curso 3",
+			"acessos": 10,
+    	},
+    ]
+
+@app.get("/colaboradores")
+async def getColaboradores():
+    return [
+    	{
+			"nome": "colaborador 1",
+    	},
+    	{
+			"nome": "colaborador 2",
+    	},
+    	{
+			"nome": "colaborador 3",
+    	},
+    ]

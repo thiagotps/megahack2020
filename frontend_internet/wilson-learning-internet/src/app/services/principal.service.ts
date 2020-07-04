@@ -25,5 +25,29 @@ export class PrincipalService {
 	      .pipe(
 	        retry(0)
 	      );
-  }
+    }
+
+    getAvaliacoes() {
+	    return this.http
+	      .get(this.basePath + 'avaliacoes', httpOptions)
+	      .pipe(
+	        retry(0)
+	      );
+    }
+
+    getCursos() {
+	    return this.http
+	      .get(this.basePath + 'cursos', httpOptions)
+	      .pipe(
+	        retry(0)
+	      );
+    }
+
+    getColaboradores() {
+	    return this.http
+	      .get(this.basePath + 'colaboradores', httpOptions)
+	      .pipe(
+	        retry(0)
+	      );
+    }
 }

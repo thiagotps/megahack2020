@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+    <span>Capacitação de Colaboradores</span>
+    <span class="example-spacer"></span>
+    <span [class.active]="pagina==='estatisticas'" class="item" (click)="navegar('estatisticas')">Estatísticas</span>
+    <span class="divider">|</span>
+    <span [class.active]="pagina==='cursos'" class="item" (click)="navegar('cursos')">Cursos</span>
+    <span class="divider">|</span>
+    <span [class.active]="pagina==='colaboradores'" class="item" (click)="navegar('colaboradores')">Colaboradores</span>
+    <span class="divider">|</span>
+    <span class="item" (click)="navegar('')">Sair</span>
+</mat-toolbar>
+
+<div class="item-item-wrapper">
+	<div class="item-wrapper">
+		<mat-card *ngFor="let curso of listaCursos" class="item-curso">{{curso['nome']}}</mat-card>
+	</div>
+</div>
+
+<button mat-raised-button color="primary" class="botao-adicionar">Adicionar Curso</button>

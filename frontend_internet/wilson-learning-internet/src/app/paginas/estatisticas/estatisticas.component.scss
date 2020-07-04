@@ -1,0 +1,33 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.divider {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.item {
+	cursor: pointer;
+	color: #F8E9A1;
+}
+
+.active {
+	color: #F76C6C !important;
+}
+
+.card-wrapper {
+	display: flex;
+	justify-content: center;
+	width: 100vw;
+	height: calc(100vh - 66px);
+	align-items: center;
+}
+
+.card-wrapper mat-card {
+	width: 45%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	text-align: center;
+	color: #374785;
+}

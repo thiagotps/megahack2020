@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+    <span>Capacitação de Colaboradores</span>
+    <span class="example-spacer"></span>
+    <span [class.active]="pagina==='estatisticas'" class="item" (click)="navegar('estatisticas')">Estatísticas</span>
+    <span class="divider">|</span>
+    <span [class.active]="pagina==='cursos'" class="item" (click)="navegar('cursos')">Cursos</span>
+    <span class="divider">|</span>
+    <span [class.active]="pagina==='colaboradores'" class="item" (click)="navegar('colaboradores')">Colaboradores</span>
+    <span class="divider">|</span>
+    <span class="item" (click)="navegar('')">Sair</span>
+</mat-toolbar>
+
+<div class="card-wrapper">
+	<mat-card>
+		<h3>Resultado das Avaliações</h3>
+		<div style="display: block">
+			<canvas baseChart
+			          [data]="doughnutChartData"
+			          [labels]="doughnutChartLabels"
+			          [options]="doughnutChartOptions"
+			          [chartType]="doughnutChartType"></canvas>
+		</div>
+	</mat-card>
+
+	<mat-card>
+		<h3>Acessos por Curso</h3>
+		<div>
+		  <div style="display: block">
+		    <canvas baseChart
+		            [datasets]="barChartData"
+		            [labels]="barChartLabels"
+		            [options]="barChartOptions"
+		            [legend]="barChartLegend"
+		            [chartType]="barChartType">
+		    </canvas>
+		  </div>
+		</div>
+	</mat-card>
+</div>

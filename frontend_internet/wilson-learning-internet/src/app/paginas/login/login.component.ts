@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { PrincipalService } from '../../services/principal.service';
 
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 	senha: string;
 
   constructor(
-  	private principalService: PrincipalService
+  	private router: Router,
+  	private principalService: PrincipalService,
   ) { }
 
   ngOnInit() {
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   realizaLogin(){
   	this.principalService.postLogin({email: this.email, senha: this.senha}).subscribe((response: any) => {
-  		alert('Login Realizado com Sucesso');
+  		this.router.navigate(['estatisticas']);
   	}, error => {
       	alert('Email ou Senha errados!');
     });
