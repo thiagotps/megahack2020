@@ -1,7 +1,7 @@
 .footer {
 	position: absolute;
 	bottom: 0px;
-	width: 100vw;
+	width: 92vw;
 	background-color: #374785;
 	color: #A8D0E6;
 	border-radius: 0px;
@@ -58,4 +58,23 @@
 	margin-bottom: 10px;
 	background-color: #F8E9A1;
 	color: #F76C6C;
+}
+
+.titulo-curso {
+	margin-left: 10px;
+}
+
+.iframe-wrapper {
+	height: 60vh;
+}
+
+.iframe-wrapper iframe {
+	height: 100%;
+}
+
+.flex-questionario {
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	overflow-y: hidden;
 }

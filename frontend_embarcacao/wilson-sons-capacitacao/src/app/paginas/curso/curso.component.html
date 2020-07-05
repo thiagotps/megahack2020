@@ -7,8 +7,19 @@
 	</div>
 </mat-card>
 
-<div class="item-item-wrapper">
-	<div class="item-wrapper">
-		<mat-card *ngFor="let curso of listaCursos" class="item-curso">{{curso['nome']}}</mat-card>
+<div *ngIf="telaAtual==='curso'">
+	<div class="item-item-wrapper">
+		<div class="item-wrapper">
+			<mat-card *ngFor="let curso of listaCursos" class="item-curso" (click)="irParaAula()">{{curso['nome']}}</mat-card>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="telaAtual==='aula'">
+	<h3 class="titulo-curso">Curso 1:</h3>
+	<div class="item-item-wrapper">
+		<div class="item-wrapper">
+			<mat-card *ngFor="let aula of listaAulas" class="item-curso" (click)="openDialog(aula)">{{aula.nome}}</mat-card>
+		</div>
 	</div>
 </div>
