@@ -15,6 +15,7 @@ def get_user(db: Session, email: str):
 
 def create_course(db: Session, course: schemas.CourseCreate):
     db_course = models.CourseDB(**course.dict())
+
 def get_courses(db: Session):
     return db.query(models.CourseDB).all()
 
