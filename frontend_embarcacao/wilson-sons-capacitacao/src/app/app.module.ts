@@ -10,12 +10,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { ProgressoComponent } from './paginas/progresso/progresso.component';
-import { CursoComponent } from './paginas/curso/curso.component';
+import { CursoComponent, DialogContentExampleDialog } from './paginas/curso/curso.component';
 import { PesquisarComponent } from './paginas/pesquisar/pesquisar.component';
 
 @NgModule({
@@ -24,7 +28,8 @@ import { PesquisarComponent } from './paginas/pesquisar/pesquisar.component';
     LoginComponent,
     ProgressoComponent,
     CursoComponent,
-    PesquisarComponent
+    PesquisarComponent,
+    DialogContentExampleDialog,
   ],
   imports: [
     HttpClientModule,
@@ -38,6 +43,13 @@ import { PesquisarComponent } from './paginas/pesquisar/pesquisar.component';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatSnackBarModule,
+  ],
+  entryComponents: [
+    DialogContentExampleDialog,
   ],
   providers: [],
   bootstrap: [AppComponent]

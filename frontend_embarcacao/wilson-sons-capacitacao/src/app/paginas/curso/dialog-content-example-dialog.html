@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>{{data.aula.nome}}</h2>
+<mat-dialog-content class="mat-typography">
+  <div *ngIf="data.aula.tipo==='pdf'" class="iframe-wrapper">
+    <iframe src="http://vps22868.publiccloud.com.br/megahack/3edicao/sistemas/pdf.pdf"></iframe>
+  </div>
+
+  <div *ngIf="data.aula.tipo==='video'">
+    <iframe src="http://vps22868.publiccloud.com.br/megahack/3edicao/sistemas/video.mp4"></iframe>
+  </div>
+
+  <div *ngIf="data.aula.tipo==='questionario'" class="flex-questionario">
+    <h4>Qual a capital do Brasil?</h4>
+    <mat-radio-group aria-label="Qual a capital do Brasil?" [(ngModel)]="selecionado">
+      <mat-radio-button value="riodejaneiro">Rio de Janeiro</mat-radio-button><br/>
+      <mat-radio-button value="saopaulo">São Paulo</mat-radio-button><br/>
+      <mat-radio-button value="aracaju">Aracaju</mat-radio-button><br/>
+      <mat-radio-button value="brasilia">Brasília</mat-radio-button><br/>
+      <mat-radio-button value="palmas">Palmas</mat-radio-button><br/>
+    </mat-radio-group>
+  </div>  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button mat-dialog-close (click)="verificaResposta()">Enviar</button>
+</mat-dialog-actions>
