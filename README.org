@@ -21,7 +21,10 @@ pip freeze > requeriments.txt
 Sendo que a execução deve ser na raiz do projeto.
 
 * Como rodar (Embarcação)
-*TODO*
+Na raiz do projeto execute:
+#+BEGIN_SRC bash
+uvicorn api_embarcacao.main:app --reload
+#+END_SRC
 
 * Como rodar (Internet)
 *TODO*
