@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from typing import Optional
+from typing import Optional, List
 
 import jwt
 from fastapi import Depends, FastAPI, HTTPException, status
@@ -8,33 +8,26 @@ from jwt import PyJWTError
 from passlib.context import CryptContext
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.orm import Session
+
+from . import crud, models, schemas
+from .database import SessionLocal, engine
 
 # This should be stored in a file and read, not directly in the code
 SECRET_KEY = "ea6f33d15fb45c513c1a2762b9919672789efb206e8692cea1613e891cacd3ed"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
-fake_users_db = {
-    "johndoe@example.com": {
-        "full_name": "John Doe",
-        "email": "johndoe@example.com",
-        "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW",
-    }
-}
 
 class Token(BaseModel):
     access_token: str
     token_type: str
 
-class User(BaseModel):
-    email: str
-    full_name: str
-    hashed_password: str
-
 # Object responsible to hash our passwords
 PWD_CONTEXT = CryptContext(schemes=["bcrypt"], deprecated="auto")
 OAUTH2_SCHEME = OAuth2PasswordBearer(tokenUrl="/token")
 
+models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 app.add_middleware(
@@ -45,13 +38,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-def get_user(db, email: str):
-    if email in db:
-        user_dict = db[email]
-        return User(**user_dict)
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
-def authenticate_user(db, email: str, password: str):
-    user = get_user(db, email)
+
+def authenticate_user(email: str, password: str, db: Session = Depends(get_db)):
+    user = crud.get_user(db, email)
     if user:
         if not PWD_CONTEXT.verify(password, user.hashed_password):
             return None
@@ -65,7 +61,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta]):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-async def get_current_user(token: str = Depends(OAUTH2_SCHEME)):
+def get_current_user(token: str = Depends(OAUTH2_SCHEME), db: Session = Depends(get_db)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -73,19 +69,21 @@ async def get_current_user(token: str = Depends(OAUTH2_SCHEME)):
     )
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: str = payload.get("sub")
-        if username is None:
+        email: str = payload.get("sub")
+        if email is None:
             raise credentials_exception
     except PyJWTError:
         raise credentials_exception
-    user = get_user(fake_users_db, email=username)
+    user = crud.get_user(db, email)
     if user is None:
         raise credentials_exception
     return user
 
 @app.post("/token", response_model=Token)
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
-    user = authenticate_user(fake_users_db, form_data.username, form_data.password)
+def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(),
+                                 db: Session = Depends(get_db)):
+
+    user = authenticate_user(form_data.username, form_data.password, db)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -97,32 +95,19 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 
     return {"access_token": access_token, "token_type": "bearer"}
 
-@app.get("/users/me/", response_model=User)
-async def read_users_me(current_user: User = Depends(get_current_user)):
+@app.get("/users/me/", response_model=schemas.User)
+def read_users_me(current_user: schemas.User = Depends(get_current_user)):
     return current_user
 
-@app.get("/avaliacoes")
-async def get_resultado_avaliacoes():
-    return {
-    	"ruim": 30,
-    	"medio": 30,
-    	"bom": 30,
-        "falta_fazer": 10,
-    }
+# @app.get("/avaliacoes")
+# async def get_resultado_avaliacoes():
+#     return {
+#     	"ruim": 30,
+#     	"medio": 30,
+#     	"bom": 30,
+#         "falta_fazer": 10,
+#     }
 
-@app.get("/cursos")
-async def get_cursos():
-    return [
-    	{
-			"nome": "curso 1",
-			"acessos": 1,
-    	},
-    	{
-			"nome": "curso 2",
-			"acessos": 5,
-    	},
-    	{
-			"nome": "curso 3",
-			"acessos": 10,
-    	},
-    ]
+@app.get("/cursos", response_model=List[schemas.Course])
+def get_courses(db: Session = Depends(get_db)):
+    return crud.get_courses(db)
