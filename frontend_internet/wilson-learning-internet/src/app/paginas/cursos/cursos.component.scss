@@ -73,12 +73,34 @@
 	display: none;
 }
 
-table {
-  width: 100%;
-}
-
-mat-dialog-actions {
+.mat-dialog-classe {
 	position: absolute;
 	bottom: 0px;
 	right: 0px;
+}
+
+.questionario-wrapper {
+	display: flex;
+	justify-content: space-around;
+	width: 65vw;
+}
+
+.questionario-card {
+	width: 40%;
+}
+
+.resposta-wrapper {
+	display: flex;
+}
+
+.resposta-wrapper mat-checkbox {
+	margin-top: 15px;
+}
+
+.botao-pergunta {
+	float: right;
+}
+
+table {
+  width: 100%;
 }
