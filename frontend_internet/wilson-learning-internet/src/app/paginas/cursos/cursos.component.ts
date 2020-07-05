@@ -123,4 +123,12 @@ export class DialogAdicionarCurso {
 })
 export class DialogAdicionarQuestionario {
 
+  tituloPergunta = "";
+
+  listaPerguntas = [];
+
+  adicionarPergunta() {
+    this.listaPerguntas.push('Pergunta ' + (this.listaPerguntas.length+1));
+  }
+
 }

@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CursosComponent, DialogAdicionarCurso, DialogAdicionarQuestionario } from './paginas/cursos/cursos.component';
 import { ColaboradoresComponent, DialogAdicionarColaborador } from './paginas/colaboradores/colaboradores.component';
 
@@ -47,6 +48,7 @@ import { ColaboradoresComponent, DialogAdicionarColaborador } from './paginas/co
     MatDialogModule,
     MatSelectModule,
     MatTableModule,
+    MatCheckboxModule,
   ],
   entryComponents: [
     DialogAdicionarCurso,
